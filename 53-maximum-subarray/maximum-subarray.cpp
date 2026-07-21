@@ -3,12 +3,12 @@ public:
     int maxSubArray(vector<int>& nums) {
         int result = nums[0];
 
-        int maxEnding = nums[0];
+        int end = nums[0];
 
         for(int i = 1; i < nums.size(); i++){
-            maxEnding = max(nums[i], maxEnding + nums[i]);
+            end = max(nums[i], end + nums[i]);
 
-            result = max(result, maxEnding);
+            result = max(result, end);
         }
 
         return result;
