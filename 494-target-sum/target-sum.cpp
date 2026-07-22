@@ -1,17 +1,20 @@
 class Solution {
 public:
-    int solve(int i, int curr, int find, vector<int>& nums){
+    int solve(int i, int curr, int find, vector<int>& nums, vector<vector<int>>& dp){
         int n = nums.size();
         if(i == n)
             return curr == find;
         
-        int ex = solve(i + 1, curr, find, nums);
+        if(dp[i][curr] != -1)
+            return dp[i][curr];
+        
+        int ex = solve(i + 1, curr, find, nums, dp);
 
         int in = 0;
         if(curr + nums[i] <= find)
-            in = solve(i + 1, curr + nums[i], find, nums);
+            in = solve(i + 1, curr + nums[i], find, nums, dp);
         
-        return ex + in;
+        return dp[i][curr] = ex + in;
     }
     int findTargetSumWays(vector<int>& nums, int target) {
         int n = nums.size();
@@ -28,7 +31,9 @@ public:
 
         if((total + target) % 2)
             return 0;
+
+        vector<vector<int>> dp(n + 1, vector<int>(find + 1, -1));
         
-        return solve(0, 0, find, nums);
+        return solve(0, 0, find, nums, dp);
     }
 };
