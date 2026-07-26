@@ -15,6 +15,7 @@ public:
         vector<vector<int>> ans;
         if(!root)
             return ans;
+        
         queue<TreeNode*> q;
         q.push(root);
 
@@ -27,8 +28,10 @@ public:
                 q.pop();
                 level.push_back(front->val);
 
-                if(front->left)
+                if(front->left){
                     q.push(front->left);
+                }
+
                 if(front->right)
                     q.push(front->right);
             }
