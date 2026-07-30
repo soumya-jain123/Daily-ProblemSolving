@@ -36,11 +36,11 @@ public:
                 q.push({front->right, {hd + 1, lvl + 1}});
         }
 
-        for(auto i : nodes){
+        for(auto i : nodes){ // current nodes structure
             vector<int> temp;
-            for(auto j : i.second){
+            for(auto j : i.second){ // nodes.second->lvl waala map 
                 sort(j.second.begin(), j.second.end());
-                for(auto k : j.second){
+                for(auto k : j.second){ // vector for each level
                     temp.push_back(k);
                 }
             }
