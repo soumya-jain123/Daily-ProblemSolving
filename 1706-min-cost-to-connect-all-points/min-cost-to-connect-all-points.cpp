@@ -11,6 +11,7 @@ public:
         for(int i = 0; i < n; i++){
             int u = -1;
 
+            // finding mini
             for(int v = 0; v < n; v++){
                 if(!mst[v] && (u == -1 || key[v] < key[u])){
                     u = v;
@@ -18,8 +19,10 @@ public:
             }
 
             mst[u] = true;
+            //adding to ans 
             ans += key[u];
 
+            //finding the minimum manhattan distance
             for(int v = 0; v < n; v++){
                 int dist = abs(points[u][0] - points[v][0]) + abs(points[u][1] - points[v][1]);
 
